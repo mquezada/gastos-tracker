@@ -18,19 +18,13 @@ python migrate_csv.py
 
 ## Virtualenv
 
-Para no hacer el proceso más lento, si se está usando virtualenv se puede usar el script `gastos` para no tener que activar/desactivar el virtualenv al momento de ejecutar el script principal. Primero, hay que agregar el directorio del virtualenv correspondiente al script:
+Para no hacer el proceso más lento, si se está usando virtualenv se puede usar el script `gastos` para no tener que activar/desactivar el virtualenv al momento de ejecutar el script principal. Primero, hay que agregar el directorio del virtualenv en un archivo llamado `settings.sh`:
 
 ```bash
 #!/bin/bash
 
-VIRTUALENV_PATH=''  # modificar acá
-
-source "$VIRTUALENV_PATH/bin/activate"
-$VIRTUALENV_PATH/bin/python gastos.py
-```
-
-```bash
-chmod +x gastos
+# ejemplo:
+VIRTUALENV_PATH='/home/mquezada/.virtualenvs/gastos/'
 ```
 
 Y luego usar el script `gastos` en vez de `gastos.py`

@@ -1,6 +1,5 @@
 #!/usr/local/bin/python
 
-from item import Item
 import datetime
 import sys
 import csv

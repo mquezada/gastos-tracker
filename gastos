@@ -1,7 +1,6 @@
 #!/bin/bash
 
-VIRTUALENV_PATH=''
-
+source settings.sh
 
 source "$VIRTUALENV_PATH/bin/activate" 
 $VIRTUALENV_PATH/bin/python gastos.py 
