@@ -5,7 +5,7 @@ from sqlalchemy.ext.declarative import declarative_base
 import datetime
 
 
-engine = create_engine('sqlite:///data/gastos.db', echo=True)
+engine = create_engine('sqlite:///data/gastos.db', echo=False)
 Base = declarative_base()
 
 

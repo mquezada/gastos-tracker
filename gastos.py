@@ -21,7 +21,7 @@ def user_input():
             print "Type Ctrl+C to exit"
             print
 
-            today = str(datetime.date.today())
+            today = datetime.datetime.strftime(datetime.date.today(), '%d-%m-%Y')
             date = raw_input("Fecha [%s]: " % today)
 
             match = re.search(r'(\d+-\d+-\d+)', date)
@@ -30,7 +30,9 @@ def user_input():
             
             if date == "":
                 date = today
-                
+
+            date = datetime.datetime.strptime(date, '%d-%m-%Y')
+            
             _type = raw_input("Gasto (g) o Ingreso (i) ([g]/i)? ")
             
             while _type not in ("", "g", "i"):
