@@ -1,3 +1,0 @@
-#!/bin/bash
-
-awk -F ',' '{ x = x + $3 } END { print x }' $1

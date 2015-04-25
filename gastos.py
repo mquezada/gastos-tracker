@@ -1,9 +1,14 @@
+#!/usr/local/bin/python
+
 from item import Item
 import datetime
 import sys
 import csv
 import re
 import os
+from create_session import session
+from model import Expense
+
 
 meses = ('enero', 'febrero', 'marzo',
          'abril', 'mayo', 'junio',
@@ -14,7 +19,7 @@ meses = ('enero', 'febrero', 'marzo',
 def user_input():
     while True:
         try:
-            print "Press CTRL+C to exit"
+            print "Type Ctrl+C to exit"
             print
 
             today = str(datetime.date.today())
@@ -28,15 +33,17 @@ def user_input():
                 date = today
                 
             _type = raw_input("Gasto (g) o Ingreso (i) ([g]/i)? ")
+            
             while _type not in ("", "g", "i"):
                 _type = raw_input("(Error) Gasto (g) o Ingreso (i)? [g] ")
             
             if _type == "":
                 _type = "g"
                 
-            item = raw_input("Item? ")
+            item = raw_input("Descripcion? ")
            
             price = raw_input("Monto? ")
+            
             match = re.search(r'(\d+)', price)
             while match is None:
                 price = raw_input("(Error) Monto? ")
@@ -45,32 +52,24 @@ def user_input():
 
             if _type == 'g':
                 price = -price
-
-            tags = raw_input("Tags? (separados por coma) ")
             
-            yield (date, item, price, tags)
+            yield (date, item, price)
             print
         except KeyboardInterrupt:
+            print
+            print
             break
 
         
 if __name__ == '__main__':
-    this_month = datetime.date.today().month
-    this_year = datetime.date.today().year
+    items = list(user_input())
 
-    F_GASTOS = "records/%d_%02d_%s.csv" % (this_year, this_month, meses[this_month - 1])
+    for date, desc, price in items:
+        expense = Expense(timestamp=date, description=desc, amount=price)
+        session.add(expense)
 
-    if not os.path.exists("records"):
-        os.makedirs("records")
-    
-    if not os.path.exists(F_GASTOS):
-        with open(F_GASTOS, 'w') as f:
-            f.write("Fecha,Item,Monto,Tags\n")
-
-    items = user_input()
-    for date, desc, price, tags in items:
-        item = Item(F_GASTOS, date, price, desc, tags)
-        item.save_item()
+    session.commit()
+        
 
     
 
