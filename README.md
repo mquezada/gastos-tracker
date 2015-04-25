@@ -1,6 +1,6 @@
-# gastos-tracker
+# Gatos-tracker
 
-Ejecutar gastos.py a gusto.
+Para llevar la cuenta de los gastos.
 
 ## Usar con SQLAlchemy
 
