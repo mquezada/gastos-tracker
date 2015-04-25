@@ -23,12 +23,10 @@ Para no hacer el proceso más lento, si se está usando virtualenv se puede usar
 ```bash
 #!/bin/bash
 
-VIRTUALENV_PATH=''
-
+VIRTUALENV_PATH=''  # modificar acá
 
 source "$VIRTUALENV_PATH/bin/activate"
 $VIRTUALENV_PATH/bin/python gastos.py
-# source "$VIRTUALENV_PATH/bin/deactivate"
 ```
 
 ```bash
