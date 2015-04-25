@@ -9,12 +9,6 @@ from create_session import session
 from model import Expense
 
 
-meses = ('enero', 'febrero', 'marzo',
-         'abril', 'mayo', 'junio',
-         'julio', 'agosto', 'septiembre',
-         'octubre', 'noviembre', 'diciembre')
-
-
 def user_input():
     while True:
         try:
