@@ -4,8 +4,14 @@ from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 import datetime
 
+try:
+    import settings
+    db_path = settings.DB_PATH
+except:
+    db_path = ""
 
-engine = create_engine('sqlite:///data/gastos.db', echo=False)
+
+engine = create_engine('sqlite:///' + db_path, echo=False)
 Base = declarative_base()
 
 

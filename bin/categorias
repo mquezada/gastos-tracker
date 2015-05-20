@@ -3,5 +3,5 @@
 source settings.sh
 
 source "$VIRTUALENV_PATH/bin/activate" 
-$VIRTUALENV_PATH/bin/python create_category.py 
+$VIRTUALENV_PATH/bin/python ../create_category.py 
 # source "$VIRTUALENV_PATH/bin/deactivate" 

@@ -1,0 +1,1 @@
+DB_PATH = '/Users/mquezada/gastos-tracker/data/gastos.db'
