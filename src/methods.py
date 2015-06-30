@@ -14,6 +14,11 @@ def get_expenses_month(year, month):
 	
 	expenses = session.query(Expense).filter(Expense.timestamp.between(date, p_date))
 	return expenses
+
+
+def get_expenses_all():
+        expenses = session.query(Expense)
+        return expenses
 	
 	
 def get_total(expenses):

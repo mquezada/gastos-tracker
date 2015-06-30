@@ -11,14 +11,19 @@ from operator import itemgetter
 
 #today = datetime.datetime.now().date()
 
-month = int(sys.argv[1])
+if len(sys.argv) > 1:
+    month = int(sys.argv[1])
 
-expenses = get_expenses_month(2015, month)
-#expenses = get_expenses_month(today.year, today.month)
+    expenses = get_expenses_month(2015, month)
+    #expenses = get_expenses_month(today.year, today.month)
+    
+else:
+    expenses = get_expenses_all()
 
+    
 expenses_list = [(e.timestamp.date(), e.amount, e.description) for e in expenses]
 expenses_list = sorted(expenses_list, key=itemgetter(0))
-
+    
 for e in expenses_list:
     if e[1] < 0:
         h = b.FAIL
